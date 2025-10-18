@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Bilimsel"
+             Title="Bilimsel">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="BackgroundColor" Value="Gray"/>
+            <Setter Property="CornerRadius" Value="10"/>
+        </Style>
+        
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor"  Value="Black"/>   
+        </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <Grid RowDefinitions="Auto,*,*,*,*,*,*" ColumnDefinitions="*,*,*,*,*" RowSpacing="1" ColumnSpacing="1" Padding="10">
+
+
+      
+        <Label x:Name="SonucAlani"
+             Text="0"
+             Grid.Row="0"
+             Grid.Column="0"
+             Grid.ColumnSpan="5"
+             FontSize="60"
+             HorizontalTextAlignment="End"
+             Padding="20, 0 , 20 , 10"
+             />
+
+        <Button Grid.Row="1" Grid.Column="0" Text="sin" Clicked="AdvİslemBasildi"></Button>
+        <Button Grid.Row="1" Grid.Column="1" Text="cos" Clicked="AdvİslemBasildi" ></Button>
+        <Button Grid.Row="1" Grid.Column="2" Text="tan" Clicked="AdvİslemBasildi" ></Button>
+        <Button Grid.Row="1" Grid.Column="3" Text="CE"  Clicked="SayfaTemizleBasildi" ></Button>
+        <Button Grid.Row="1" Grid.Column="4" Text=" ⌫" Clicked="SilBasildi" ></Button>
+
+        <Button Grid.Row="2" Grid.Column="0" Text="sec"   Clicked="AdvİslemBasildi"  ></Button>
+        <Button Grid.Row="2" Grid.Column="1" Text="cosec" Clicked="AdvİslemBasildi"  ></Button>
+        <Button Grid.Row="2" Grid.Column="2" Text="cot"   Clicked="AdvİslemBasildi"  ></Button>
+        <Button Grid.Row="2" Grid.Column="3" Text="√¯"   Clicked="AdvİslemBasildi"  ></Button>
+        <Button Grid.Row="2" Grid.Column="4" Text="÷"     Clicked="İslemBasildi"  ></Button>
+
+        <Button Grid.Row="3" Grid.Column="0"></Button>
+        <Button Grid.Row="3" Grid.Column="1" Text="7" Clicked="SayiBasildi"  ></Button>
+        <Button Grid.Row="3" Grid.Column="2" Text="8" Clicked="SayiBasildi"  ></Button>
+        <Button Grid.Row="3" Grid.Column="3" Text="9" Clicked="SayiBasildi"  ></Button>
+        <Button Grid.Row="3" Grid.Column="4" Text="x" Clicked="İslemBasildi"  ></Button>
+
+        <Button Grid.Row="4" Grid.Column="0" Text="x²" Clicked="AdvİslemBasildi" ></Button>
+        <Button Grid.Row="4" Grid.Column="1" Text="4"  Clicked="SayiBasildi" ></Button>
+        <Button Grid.Row="4" Grid.Column="2" Text="5"  Clicked="SayiBasildi" ></Button>
+        <Button Grid.Row="4" Grid.Column="3" Text="6"  Clicked="SayiBasildi" ></Button>
+        <Button Grid.Row="4" Grid.Column="4" Text="-"  Clicked="İslemBasildi" ></Button>
+
+        <Button Grid.Row="5" Grid.Column="0" Text="log" Clicked="AdvİslemBasildi"></Button>
+        <Button Grid.Row="5" Grid.Column="1" Text="1"  Clicked="SayiBasildi"></Button>
+        <Button Grid.Row="5" Grid.Column="2" Text="2"  Clicked="SayiBasildi"></Button>
+        <Button Grid.Row="5" Grid.Column="3" Text="3"  Clicked="SayiBasildi"></Button>
+        <Button Grid.Row="5" Grid.Column="4" Text="+"  Clicked="İslemBasildi"></Button>
+
+        <Button Grid.Row="6" Grid.Column="0" Text="ln" Clicked="AdvİslemBasildi"> </Button>
+        <Button Grid.Row="6" Grid.Column="1" Text="+/-"> </Button>
+        <Button Grid.Row="6" Grid.Column="2" Text="0" Clicked="SayiBasildi"> </Button>
+        <Button Grid.Row="6" Grid.Column="3" Text="," Clicked="VirgulBasildi"> </Button>
+        <Button Grid.Row="6" Grid.Column="4" Text="=" Clicked="EsittirBasildi" BackgroundColor="CadetBlue"> </Button>
+
+
+
+    </Grid>
+
+
+</ContentPage>
