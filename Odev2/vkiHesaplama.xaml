@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Odev2.vkiHesaplama"
+             Title="VKİ Hesaplama Sayfası"
+             Padding="20"
+             >
+
+    <VerticalStackLayout Spacing="20">
+
+
+        <Label Text="Kilo (kg)" FontSize="Medium" FontAttributes="Bold"  />
+        <HorizontalStackLayout Spacing="15" VerticalOptions="Center">
+            <Slider x:Name="kiloSlider"
+                    Minimum="30" Maximum="200" Value="{Binding Kilo, Mode=TwoWay}"
+                    WidthRequest="250"/>
+
+            <Label Text="{Binding Kilo, StringFormat='{0:F0} kg'}" 
+                   FontSize="Large" 
+                   FontAttributes="Bold" 
+                   VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <BoxView HeightRequest="1" Color="LightGray" />
+
+        <Label Text="Boy (cm)" FontSize="Medium" FontAttributes="Bold" />
+        <HorizontalStackLayout Spacing="15" VerticalOptions="Center">
+            <Slider x:Name="boySlider"
+                    Minimum="100" Maximum="230" Value="{Binding Boy, Mode=TwoWay}"
+                    WidthRequest="250"/>
+
+            <Label Text="{Binding Boy, StringFormat='{0:F0} cm'}" 
+                   FontSize="Large" 
+                   FontAttributes="Bold" />
+        </HorizontalStackLayout>
+
+        <BoxView HeightRequest="1" Color="LightGray" />
+
+        <Label Text="VKİ Değeri:" FontSize="Medium"/>
+
+        <Label Text="{Binding VkiDegeri, StringFormat='{0:F2}'}" 
+               FontSize="70" 
+               FontAttributes="Bold" 
+               TextColor="#007ACC" 
+               HorizontalOptions="Center" />
+
+        <Label Text="{Binding VkiYorumu}" 
+               FontSize="Large" 
+               FontAttributes="Italic" 
+               TextColor="Red" 
+               HorizontalOptions="Center" />
+
+    </VerticalStackLayout>
+</ContentPage>

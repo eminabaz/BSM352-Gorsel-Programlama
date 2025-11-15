@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Odev2.renkSecici"
+             Title="Renk Seçici Sayfası"
+             Padding="20"
+             BackgroundColor="{Binding ComputedColor, Mode=OneWay}">
+    <VerticalStackLayout Spacing="25" VerticalOptions="Start">
+
+        <Label Text="RGB Renk Ayarları" 
+               FontSize="Title" 
+               FontAttributes="Bold" 
+               HorizontalOptions="Center" 
+               TextColor="White" />
+
+        <Label Text="{Binding HexColor, StringFormat='Renk Kodu: {0}'}"
+               FontSize="Medium"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               TextColor="White" />
+
+        <Label Text="Kırmızı (Red)" TextColor="Red" FontAttributes="Bold" FontSize="Small"/>
+        <HorizontalStackLayout Spacing="15" VerticalOptions="Center">
+            <Slider x:Name="redSlider"
+                    Minimum="0" Maximum="255" Value="{Binding Red, Mode=TwoWay}"
+                    ThumbColor="Red"
+                    MinimumTrackColor="Red"
+                    MaximumTrackColor="#444444"
+                    WidthRequest="250" />
+            <Label Text="{Binding Red}" 
+                   FontSize="Large" 
+                   TextColor="White" 
+                   VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <Label Text="Yeşil (Green)" TextColor="Lime" FontAttributes="Bold" FontSize="Small"/>
+        <HorizontalStackLayout Spacing="15" VerticalOptions="Center">
+            <Slider x:Name="greenSlider"
+                    Minimum="0" Maximum="255" Value="{Binding Green, Mode=TwoWay}"
+                    ThumbColor="Lime"
+                    MinimumTrackColor="Lime"
+                    MaximumTrackColor="#444444"
+                    WidthRequest="250" />
+            <Label Text="{Binding Green}" 
+                   FontSize="Large" 
+                   TextColor="White" 
+                   VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <Label Text="Mavi (Blue)" TextColor="DeepSkyBlue" FontAttributes="Bold" FontSize="Small"/>
+        <HorizontalStackLayout Spacing="15" VerticalOptions="Center">
+            <Slider x:Name="blueSlider"
+                    Minimum="0" Maximum="255" Value="{Binding Blue, Mode=TwoWay}"
+                    ThumbColor="DeepSkyBlue"
+                    MinimumTrackColor="DeepSkyBlue"
+                    MaximumTrackColor="#444444"
+                    WidthRequest="250" />
+            <Label Text="{Binding Blue}" 
+                   FontSize="Large" 
+                   TextColor="White" 
+                   VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <BoxView HeightRequest="1" Color="#444444" Margin="0, 10, 0, 10"/>
+
+        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+
+            <Button Text="Kopyala"
+                    Clicked="OnKopyalaClicked"
+                    BackgroundColor="#007ACC"
+                    TextColor="White"
+                    CornerRadius="5"
+                    WidthRequest="150" />
+
+            <Button Text="Rastgele Renk"
+                    Clicked="OnRastgeleRenkClicked"
+                    BackgroundColor="#FFA500"
+                    TextColor="White"
+                    CornerRadius="5"
+                    WidthRequest="150" />
+
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>

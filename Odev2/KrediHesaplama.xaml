@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Odev2.KrediHesaplama"
+             Title="KrediHesaplama">
+    <VerticalStackLayout Spacing="15">
+
+        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*" RowSpacing="20">
+
+
+            <Picker Title=" Kredi Türü Seçiniz.."
+         x:Name="KrediPicker"     Grid.Row="0" Grid.Column="0"     
+          SelectedIndexChanged="KrediTipiDegisti" WidthRequest="200" HorizontalOptions="Start">
+
+
+            <Picker.Items>
+                <x:String>İtiyaç Kredisi</x:String>
+                <x:String>Konut Kredisi</x:String>
+                <x:String>Taşıt Kredisi</x:String>
+                <x:String>Ticari Kredi</x:String>
+            </Picker.Items>
+        </Picker>
+
+
+            <VerticalStackLayout Grid.Column="0" Grid.Row="1">
+            <Label Text="Kredi Tutarı(TL)" />
+            <Entry x:Name="entryKrediTutari" WidthRequest="200" HorizontalOptions="Start"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="0" Grid.Row="2">
+            <Label Text="Faiz Oranı (%)" />
+            <Entry x:Name="entryFaizOrani"  WidthRequest="200" HorizontalOptions="Start"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="0" Grid.Row="3">
+            <Label Text="Vade(Ay)" />
+            <HorizontalStackLayout Spacing="20">
+            <Slider x:Name="sliderVadeSuresi"  Minimum="1" Maximum="12" WidthRequest="200" HorizontalOptions="Start" />
+            <Label Text="{Binding Source={x:Reference sliderVadeSuresi}, 
+                          Path=Value, 
+                          StringFormat='{0:F0} Ay'}"
+             VerticalOptions="Center" 
+             FontAttributes="Bold" />
+            </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="0" Grid.Row="4">
+            <Button Text="Hesapla"  x:Name="Hesapla" WidthRequest="200" HorizontalOptions="Start"
+                    Clicked="HesaplamaBasıldı"/>
+            </VerticalStackLayout>
+
+
+            
+            <Label Text="{Binding AylikTaksit, StringFormat='Aylık Taksit: {0:N2} TL' }" Grid.Column="1" Grid.Row="0" HorizontalOptions="Start"/>
+            <Label Text="{Binding ToplamOdeme, StringFormat='Toplam Odeme: {0:N2} TL' }" Grid.Column="1" Grid.Row="1" HorizontalOptions="Start"/>
+            <Label Text="{Binding ToplamFaiz, StringFormat='Toplam Faiz: {0:N2} TL' }" Grid.Column="1" Grid.Row="2" HorizontalOptions="Start"/>
+
+
+
+
+        </Grid>
+
+    </VerticalStackLayout>
+</ContentPage>

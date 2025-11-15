@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Odev2.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Odev2"
+    Shell.FlyoutBehavior="Flyout"
+    Title="AnaSayfa">
+
+    <FlyoutItem Title="AnaSayfa">
+        <ShellContent ContentTemplate="{DataTemplate local:MainPage}"
+                      Route="MainPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Kredi Hesaplama">
+
+        <ShellContent ContentTemplate="{DataTemplate local:KrediHesaplama}"
+              Route="KrediHesaplama" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Vücut Kitle Endeksi">
+
+        <ShellContent ContentTemplate="{DataTemplate local:vkiHesaplama}"
+          Route="vkiHesaplama"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Renk Seçici">
+
+        <ShellContent ContentTemplate="{DataTemplate local:renkSecici}"
+          Route="renkSecici" />
+    </FlyoutItem>
+
+
+
+</Shell>
+    
+
+    
+    
+    
+
