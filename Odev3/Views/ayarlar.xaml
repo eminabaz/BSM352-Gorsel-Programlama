@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Odev3.ViewModels"
+             x:Class="Odev3.Views.ayarlar"
+             Title="Ayarlar"
+             BackgroundColor="{AppThemeBinding Light=White, Dark=#121212}">
+
+    <VerticalStackLayout Spacing="20" Padding="20">
+
+        <Label Text="Uygulama Ayarları" 
+               FontSize="22" 
+               FontAttributes="Bold" 
+               TextColor="{AppThemeBinding Light=Black, Dark=White}"
+               Margin="0,0,0,10"/>
+
+        <Frame CornerRadius="10" 
+               HasShadow="True" 
+               Padding="15" 
+               BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}"
+               BorderColor="{AppThemeBinding Light=LightGray, Dark=DarkGray}">
+
+            <Grid ColumnDefinitions="*, Auto">
+
+                <VerticalStackLayout Grid.Column="0" Spacing="2">
+                    <Label Text="Koyu Tema" 
+                           FontSize="18" 
+                           TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                    <Label Text="Uygulamanın görünümünü koyu moda geçir" 
+                           FontSize="12" 
+                           TextColor="Gray"/>
+                </VerticalStackLayout>
+
+                <Switch Grid.Column="1" 
+                        IsToggled="{Binding IsDarkTheme}" 
+                        OnColor="#512BD4" 
+                        ThumbColor="White"/>
+            </Grid>
+        </Frame>
+
+        <Label Text="Versiyon 1.0.0" 
+               TextColor="Gray" 
+               HorizontalOptions="Center" 
+               Margin="0,20,0,0"/>
+
+    </VerticalStackLayout>
+</ContentPage>

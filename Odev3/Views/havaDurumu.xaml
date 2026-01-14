@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Odev3.ViewModels"
+             x:Class="Odev3.Views.havaDurumu"
+             Title="Hava Durumu"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="Auto, *">
+
+        <Grid Grid.Row="0" BackgroundColor="#512BD4" Padding="15" ColumnDefinitions="*, Auto">
+            <Label Text="Şehir Listesi" TextColor="White" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"/>
+
+            <ImageButton Grid.Column="1" 
+                         Source="plus.png" 
+                         HeightRequest="30" 
+                         WidthRequest="30"
+                         Command="{Binding AddCityCommand}">
+            </ImageButton>
+        </Grid>
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Sehirler}" Margin="10">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Spacing="5" Margin="0,0,0,20">
+
+                        <Grid ColumnDefinitions="*, Auto">
+                            <Label Text="{Binding Name}" 
+                                   FontSize="20" 
+                                   FontAttributes="Bold" 
+                                   TextColor="Black" 
+                                   VerticalOptions="Center"/>
+
+                            <Button Grid.Column="1" 
+                                    Text="-" 
+                                    TextColor="White" 
+                                    BackgroundColor="#D32F2F" 
+                                    HeightRequest="35" 
+                                    WidthRequest="40"
+                                    CornerRadius="20"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HavaDurumuViewModel}}, Path=DeleteCityCommand}"
+                                    CommandParameter="{Binding .}"/>
+                        </Grid>
+
+                        <Frame Padding="0" HasShadow="True" BorderColor="LightGray" HeightRequest="160">
+                            <WebView Source="{Binding SourceUrl}" 
+                                      HeightRequest="160" 
+                                      VerticalOptions="Fill"/>
+                        </Frame>
+
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

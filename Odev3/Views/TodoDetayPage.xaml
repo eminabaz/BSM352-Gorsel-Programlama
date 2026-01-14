@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Odev3.ViewModels"
+             x:Class="Odev3.Views.TodoDetayPage"
+             Title="Görev Detayı">
+
+    <VerticalStackLayout Spacing="15" Padding="20">
+
+        <Label Text="Görev Başlığı:" FontAttributes="Bold"/>
+        <Entry Text="{Binding Gorev.Baslik}" Placeholder="Örn: Ödev Yapılacak" />
+
+        <Label Text="Detay:" FontAttributes="Bold"/>
+        <Editor Text="{Binding Gorev.Detay}" HeightRequest="100" Placeholder="Detayları buraya girin..." />
+
+        <Label Text="Tarih:" FontAttributes="Bold"/>
+        <DatePicker Date="{Binding Gorev.Tarih}" />
+
+        <Label Text="Saat:" FontAttributes="Bold"/>
+        <TimePicker Time="{Binding Gorev.Saat}" />
+
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center" Margin="0,20,0,0">
+            <Button Text="Kaydet" Command="{Binding SaveCommand}" BackgroundColor="#512BD4" TextColor="White" WidthRequest="100"/>
+            <Button Text="İptal" Command="{Binding SaveCommand}" BackgroundColor="Gray" TextColor="White" WidthRequest="100" />
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>

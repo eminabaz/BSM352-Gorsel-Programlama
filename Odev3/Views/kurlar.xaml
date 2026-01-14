@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Odev3.Views.kurlar"
+             Title="Güncel Kurlar"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="Auto, Auto, *">
+
+        <Grid Grid.Row="0" BackgroundColor="#512BD4" HeightRequest="60" Padding="15,0">
+            <Label Text="Güncel Kurlar" TextColor="White" FontSize="20" FontAttributes="Bold"
+                   VerticalOptions="Center" HorizontalOptions="Center"/>
+
+            <ImageButton Source="refresh.png" BackgroundColor="#512BD4"
+                         Command="{Binding YenileCommand}"
+                         HorizontalOptions="End" VerticalOptions="Center" HeightRequest="30"/>
+        </Grid>
+
+        <Grid Grid.Row="1" ColumnDefinitions="2*, 1.5*, 1.5*, 1*, 0.8*" Padding="10" BackgroundColor="#EEEEEE">
+            <Label Grid.Column="0" Text="Tür" TextColor="#FF8C00" FontAttributes="Bold"/>
+            <Label Grid.Column="1" Text="Alış" TextColor="#FF8C00" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label Grid.Column="2" Text="Satış" TextColor="#FF8C00" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label Grid.Column="3" Text="Fark" TextColor="#FF8C00" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label Grid.Column="4" Text="Yön" TextColor="#FF8C00" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+        </Grid>
+
+        <RefreshView Grid.Row="2" Command="{Binding YenileCommand}" IsRefreshing="{Binding IsBusy}">
+            <CollectionView ItemsSource="{Binding Kurlar}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="0,5">
+                            <Grid ColumnDefinitions="2*, 1.5*, 1.5*, 1*, 0.8*" Padding="10,12">
+                                <Label Grid.Column="0" Text="{Binding Tur}" TextColor="#FF8C00" FontAttributes="Bold"/>
+                                <Label Grid.Column="1" Text="{Binding Alis}" TextColor="Black" HorizontalTextAlignment="Center"/>
+                                <Label Grid.Column="2" Text="{Binding Satis}" TextColor="Black" HorizontalTextAlignment="Center"/>
+                                <Label Grid.Column="3" Text="{Binding Fark}" TextColor="Gray" HorizontalTextAlignment="Center" FontSize="12"/>
+                                <Label Grid.Column="4" Text="{Binding Yon}" TextColor="{Binding Renk}" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                            </Grid>
+                            <BoxView HeightRequest="1" Color="#E0E0E0" VerticalOptions="End"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <Grid Grid.Row="0" Grid.RowSpan="3" BackgroundColor="#80000000" IsVisible="{Binding IsBusy}">
+            <ActivityIndicator IsRunning="{Binding IsBusy}" Color="White" 
+                               VerticalOptions="Center" HorizontalOptions="Center"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>

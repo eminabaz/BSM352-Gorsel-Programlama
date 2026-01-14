@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Odev3.ViewModels"
+             x:Class="Odev3.Views.haberler"
+             Title="Haberler"
+             BackgroundColor="#F0F0F0">
+
+    <Grid RowDefinitions="Auto, *">
+
+        <CollectionView Grid.Row="0" 
+                        ItemsSource="{Binding Kategoriler}"
+                        HeightRequest="60"
+                        SelectionMode="None"
+                        BackgroundColor="White">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="5">
+                        <Button Text="{Binding Baslik}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HaberlerViewModel}}, Path=LoadNewsCommand}"
+                                CommandParameter="{Binding .}"
+                                BackgroundColor="{Binding BackgroundColor}"
+                                TextColor="{Binding TextColor}"
+                                CornerRadius="15"
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                HeightRequest="40"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <RefreshView Grid.Row="1" IsRefreshing="{Binding IsBusy}" Command="{Binding LoadNewsCommand}">
+            <CollectionView ItemsSource="{Binding HaberlerListesi}" Margin="10">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="15"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="10" Padding="0" HasShadow="True" BackgroundColor="White">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HaberlerViewModel}}, Path=OpenDetailCommand}"
+                                                      CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+
+                            <Grid RowDefinitions="200, Auto, Auto" Padding="0">
+                                <Image Grid.Row="0" 
+                                       Source="{Binding Thumbnail}" 
+                                       Aspect="AspectFill" 
+                                       HeightRequest="200"/>
+
+                                <Label Grid.Row="1" 
+                                       Text="{Binding Title}" 
+                                       FontSize="16" 
+                                       FontAttributes="Bold" 
+                                       TextColor="Black" 
+                                       Padding="10,10,10,5"
+                                       MaxLines="2"
+                                       LineBreakMode="TailTruncation"/>
+
+                                <Label Grid.Row="2" 
+                                       Text="{Binding PubDate}" 
+                                       FontSize="12" 
+                                       TextColor="Gray" 
+                                       Padding="10,0,10,15"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <ActivityIndicator Grid.Row="1" 
+                           IsRunning="{Binding IsBusy}" 
+                           IsVisible="{Binding IsBusy}" 
+                           Color="#512BD4"
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center"/>
+    </Grid>
+</ContentPage>

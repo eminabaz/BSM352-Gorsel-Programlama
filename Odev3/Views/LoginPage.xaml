@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Odev3.ViewModels"
+             x:Class="Odev3.Views.LoginPage"
+             Title="Login">
+
+    <ContentPage.Resources>
+        <Color x:Key="PrimaryColor">#5A2BE8</Color>
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="HeightRequest" Value="45" />
+        </Style>
+        <Style x:Key="LinkLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+        </Style>
+        
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="0" VerticalOptions="Start">
+
+            <Grid RowDefinitions="*,Auto" HeightRequest="420">
+                <Frame Grid.Row="0"
+                       Padding="20"
+                       HasShadow="False"
+                       CornerRadius="16"
+                       BorderColor="#E0E0E0"
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       WidthRequest="320">
+
+                    <VerticalStackLayout Spacing="14">
+                        <!-- Login View -->
+                        <StackLayout x:Name="LoginView" Spacing="10" IsVisible="{Binding IsLoginMode}">
+                            <Label Text="Oturum Aç" FontAttributes="Bold" FontSize="16" />
+                            <Entry Placeholder="Email"
+                                   Text="{Binding Email}"
+                                   Keyboard="Email" />
+                            <Entry Placeholder="Password"
+                                   IsPassword="True"
+                                   Text="{Binding Password}" />
+                            <Button Text="Oturum Aç"
+                                    Style="{StaticResource PrimaryButton}"
+                                    Command="{Binding LoginCommand}" />
+
+                        </StackLayout>
+
+                        <!-- Register View -->
+                        <StackLayout x:Name="RegisterView" Spacing="10" IsVisible="{Binding IsRegisterMode}">
+                            <Label Text="Kaydol" FontAttributes="Bold" FontSize="16" />
+                            <Entry Placeholder="Kullanıcı Adı"
+                                   Text="{Binding Username}" />
+                            <Entry Placeholder="Email"
+                                   Text="{Binding Email}"
+                                   Keyboard="Email" />
+                            <Entry Placeholder="Password"
+                                   IsPassword="True"
+                                   Text="{Binding Password}" />
+                            <Button Text="Kaydol"
+                                    Style="{StaticResource PrimaryButton}"
+                                    Command="{Binding RegisterCommand}" />
+                        </StackLayout>
+
+                        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                                           IsRunning="{Binding IsBusy}"
+                                           Color="{StaticResource PrimaryColor}"
+                                           HorizontalOptions="Center" />
+
+                        <Label Text="{Binding LoginMessage}"
+                               TextColor="Crimson"
+                               HorizontalOptions="Center" />
+
+                        <Button Text="{Binding ToggleLinkText}"
+                             Command="{Binding ToggleModeCommand}"
+                             BackgroundColor="Transparent"
+                             TextColor="#512BD4"
+                             FontAttributes="Bold"
+                             HorizontalOptions="Center"
+                             HeightRequest="50" />
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

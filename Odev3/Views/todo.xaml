@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Odev3.ViewModels"
+             x:Class="Odev3.Views.todo"
+             Title="Yapılacaklar"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="Auto, *">
+        <Grid Grid.Row="0" BackgroundColor="#512BD4" Padding="15" ColumnDefinitions="*, Auto, Auto">
+            <Label Text="Görev Listesi" TextColor="White" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"/>
+
+            <ImageButton Grid.Column="1" Source="refresh.png" Command="{Binding LoadDataCommand}" HeightRequest="30" Margin="0,0,15,0"/>
+
+            <ImageButton Grid.Column="2" Source="plus.png" Command="{Binding AddCommand}" HeightRequest="30"/>
+        </Grid>
+
+        <RefreshView Grid.Row="1" IsRefreshing="{Binding IsBusy}" Command="{Binding LoadDataCommand}">
+            <CollectionView ItemsSource="{Binding Gorevler}" Margin="10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="0,5" 
+               Padding="10" 
+               HasShadow="True" 
+               BorderColor="{AppThemeBinding Light=LightGray, Dark=DarkGray}"
+               BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}">
+
+                            <Grid ColumnDefinitions="Auto, *, Auto, Auto">
+                                <CheckBox IsChecked="{Binding YapildiMi}" VerticalOptions="Center" Color="#512BD4"/>
+
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+
+                                    <Label Text="{Binding Baslik}" 
+                           FontSize="16" 
+                           FontAttributes="Bold" 
+                           TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+
+                                    <Label Text="{Binding Detay}" 
+                           FontSize="12" 
+                           LineBreakMode="TailTruncation"
+                           TextColor="{AppThemeBinding Light=Gray, Dark=LightGray}"/>
+
+                                    <Label Text="{Binding Tarih, StringFormat='{0:dd/MM/yyyy}'}" 
+                           FontSize="10" 
+                           TextColor="#512BD4"/>
+                                </VerticalStackLayout>
+
+                                <ImageButton Grid.Column="2" Source="edit_icon.png" HeightRequest="25" WidthRequest="25" Margin="5"
+                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:TodoViewModel}}, Path=EditCommand}"
+                             CommandParameter="{Binding .}"/>
+
+                                <ImageButton Grid.Column="3" Source="delete_icon.png" HeightRequest="25" WidthRequest="25"
+                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:TodoViewModel}}, Path=DeleteCommand}"
+                             CommandParameter="{Binding .}"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>
